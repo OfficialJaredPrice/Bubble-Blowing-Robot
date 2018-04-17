@@ -6,9 +6,13 @@ This repository is the documentation of the creation of the bubble-blowing robot
 REPOSITORY CONTENTS:
 
 The contents of this repository are:
+
 img - folder containing relevant images such as build and circuit diagram
+
 LICENSE - contains licensing information
+
 scr - contains project source code
+
 
 MATERIALS:
 
@@ -52,9 +56,11 @@ BUILD INSTRUCTIONS:
 Most of the build has little impact on the overall functionality of the machine. However, key building notes are provided below.
 The dimensions of the machine's frame are 23*45*9cm for the frame (w*l*h). The trusses of the frame span ~15cm each to provide a uniform support system to the frame. The bottom IR sensor is placed adjacent to the wheel to prevent accidental bumping and to provide signal if the wheel loses contact with the ground. Other information about build, such as the wiring, can be inferred from images provided in img file or by commenting questions which will be responded to.
 
+
 FIRMWARE INSTRUCTIONS:
 
 To install the software on this device simply copy and paste the code at src into the arduino IDE
+
 
 USAGE:
 
