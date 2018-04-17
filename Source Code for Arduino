@@ -1,36 +1,46 @@
 #include <Servo.h> 
  
-Servo myservo;  // create servo object to control a servo 
+Servo servo1;  // create servo object to control a servo 
   
 int pos = 0;    // variable to store the servo position 
 const int motorPin = 12;
 const int servoPin = 9;
+const int frontIR = 4; //sensing functions
+const int topIR = 5;
+const int bottomIR = 11;
 
-void Fan();
+void Drive(); //drive function
 
 void setup() 
 { 
+  pos = 0;//control servo position
   pinMode(motorPin, OUTPUT);
-  myservo.attach(servoPin);  // attaches the servo on pin 9 to the servo object 
+  servo1.attach(servoPin);  // attaches the servo on pin 9 to the servo object 
 } 
  
 void loop() 
 { 
- 
+if(digitalRead(frontIR) == HIGH && digitalRead(bottomIR) == LOW && digitalRead(topIR) == HIGH) //check if all sensors are clear
+{
+ Drive();  //drive
   for(pos = 0; pos < 180; pos += 1)  // goes from 0 degrees to 180 degrees 
   {                                  // in steps of 1 degree 
-    myservo.write(pos);              // tell servo to go to position in variable 'pos' 
+    servo1.write(pos);              // tell servo to go to position in variable 'pos' 
     delay(15);                       // waits 15ms for the servo to reach the position 
   } 
-  Fan();
-  delay(250);
+  delay(5000); //hold for 5 seconds
   for(pos = 180; pos>=1; pos-=1)     // goes from 180 degrees to 0 degrees 
   {                                
     myservo.write(pos);              // tell servo to go to position in variable 'pos' 
   } 
+  }
+  else
+  {
+   digitalWrite(motorPin, LOW); //if sensors are neg, stop motion
+  }
 } 
 
-void Fan() //controls fan
+void Drive() //controls wheels
 {
-
+ digitalWrite(motorPin, HIGH);
 }
